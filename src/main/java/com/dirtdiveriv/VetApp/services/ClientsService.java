@@ -14,13 +14,13 @@ import java.util.List;
 public class ClientsService {
     private final ClientsRepository clientsRepository;
 
+    @PersistenceContext
+    private EntityManager entityManager;
+
     @Autowired
     public ClientsService(ClientsRepository clientsRepository) {
         this.clientsRepository = clientsRepository;
     }
-
-    @PersistenceContext
-    private static EntityManager entityManager;
 
     @Transactional
     public Clients createClient(Clients client) {
@@ -28,9 +28,7 @@ public class ClientsService {
         return client;
     }
 
-
-
-    public static Clients getClientById(Long id) {
+    public Clients getClientById(Long id) {
         return entityManager.find(Clients.class, id);
     }
 

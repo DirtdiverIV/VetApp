@@ -24,9 +24,12 @@ public class ClientsController {
     @Autowired
     private ClientsRepository clientsRepository;
 
+    @Autowired
+    private ClientsService clientsService; // Inyecta una instancia de ClientsService
+
     @GetMapping("/{id}")
     public Clients getClientById(@PathVariable Long id) {
-        Clients client = entityManager.find(Clients.class, id);
+        Clients client = clientsService.getClientById(id); // Llama al método en la instancia inyectada
         if (client == null) {
             throw new EntityNotFoundException("Client with ID " + id + " not found.");
         }
@@ -35,7 +38,7 @@ public class ClientsController {
 
     @GetMapping("/{id}/pets")
     public List<Pets> getClientPets(@PathVariable Long id) {
-        Clients client = ClientsService.getClientById(id);
+        Clients client = clientsService.getClientById(id); // Llama al método en la instancia inyectada
         if (client == null) {
             throw new EntityNotFoundException("Client with ID " + id + " not found.");
         }
