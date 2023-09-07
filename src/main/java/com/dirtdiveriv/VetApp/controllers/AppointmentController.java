@@ -23,6 +23,15 @@ public class AppointmentController {
         this.appointmentService = appointmentService;
     }
 
+    @GetMapping
+    public List<Appointment> getAllAppointments() {
+        List<Appointment> appointments = appointmentService.getAllAppointments();
+        if (appointments.isEmpty()) {
+            throw new EntityNotFoundException("No appointments found.");
+        }
+        return appointments;
+    }
+
     @GetMapping("/{id}")
     public Appointment getAppointmentById(@PathVariable Long id) {
         Appointment appointment = appointmentService.getAppointmentById(id);

@@ -1,8 +1,10 @@
 package com.dirtdiveriv.VetApp.services;
 
+import com.dirtdiveriv.VetApp.repositories.AppointmentRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.dirtdiveriv.VetApp.models.Appointment;
 
@@ -14,10 +16,21 @@ public class AppointmentService {
     @PersistenceContext
     private EntityManager entityManager;
 
+    private final AppointmentRepository appointmentRepository;
+
+    @Autowired
+    public AppointmentService(AppointmentRepository appointmentRepository) {
+        this.appointmentRepository = appointmentRepository;
+    }
+
     @Transactional
     public Appointment createAppointment(Appointment appointment) {
         entityManager.persist(appointment);
         return appointment;
+    }
+
+    public List<Appointment> getAllAppointments() {
+        return appointmentRepository.findAll();
     }
 
     public Appointment getAppointmentById(Long id) {

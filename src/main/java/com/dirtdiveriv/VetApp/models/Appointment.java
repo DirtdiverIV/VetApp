@@ -1,5 +1,6 @@
 package com.dirtdiveriv.VetApp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.Date;
 
@@ -16,10 +17,12 @@ public class Appointment {
 
     @ManyToOne
     @JoinColumn(name = "pet_id", referencedColumnName = "id", nullable = false)
+    @JsonIgnore
     private Pets pet;
 
     @ManyToOne
     @JoinColumn(name = "client_id", referencedColumnName = "id", nullable = false)
+    @JsonIgnore
     private Clients client;
 
 

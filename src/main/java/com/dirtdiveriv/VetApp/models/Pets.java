@@ -1,5 +1,6 @@
 package com.dirtdiveriv.VetApp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -22,12 +23,15 @@ public class Pets {
 
     @ManyToOne
     @JoinColumn(name = "client_id")
+    @JsonIgnore
     private Clients owner;
 
     @OneToMany(mappedBy = "pet")
+    @JsonIgnore
     private List<Appointment>appointments;
 
     @OneToMany(mappedBy = "pet")
+    @JsonIgnore
     private List<MedicalHistory>medicalHistories;
 
 

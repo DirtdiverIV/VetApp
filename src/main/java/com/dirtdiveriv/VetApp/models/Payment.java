@@ -1,5 +1,6 @@
 package com.dirtdiveriv.VetApp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.Date;
 
@@ -12,6 +13,7 @@ public class Payment {
 
     @ManyToOne
     @JoinColumn(name = "client_id", referencedColumnName = "id", nullable = false)
+    @JsonIgnore
     private Clients client;
 
     @Temporal(TemporalType.TIMESTAMP)

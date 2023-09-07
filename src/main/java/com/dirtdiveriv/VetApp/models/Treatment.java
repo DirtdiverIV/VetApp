@@ -1,5 +1,6 @@
 package com.dirtdiveriv.VetApp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,6 +12,7 @@ public class Treatment {
 
     @ManyToOne
     @JoinColumn(name = "pet_id", referencedColumnName = "id", nullable = false)
+    @JsonIgnore
     private Pets pet;
 
     @Column(nullable = false)

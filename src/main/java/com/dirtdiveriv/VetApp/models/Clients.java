@@ -1,5 +1,6 @@
 package com.dirtdiveriv.VetApp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -26,9 +27,11 @@ public class Clients {
     private String address;
 
     @OneToMany(mappedBy = "owner")
+    @JsonIgnore
     private List<Pets> pets;
 
     @OneToMany(mappedBy = "client")
+    @JsonIgnore
     private List<Payment> payments;
 
 

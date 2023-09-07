@@ -1,10 +1,15 @@
 package com.dirtdiveriv.VetApp.controllers;
+import com.dirtdiveriv.VetApp.repositories.UsersRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.dirtdiveriv.VetApp.models.Users;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/users")
@@ -12,6 +17,15 @@ public class UsersController {
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    @Autowired
+    private UsersRepository userRepository;
+
+    @GetMapping
+    public ResponseEntity<List<Users>> getAllUsers() {
+        List<Users> users = userRepository.findAll();
+        return ResponseEntity.ok(users);
+    }
 
     @GetMapping("/{id}")
     public Users getUserById(@PathVariable Long id) {

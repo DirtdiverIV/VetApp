@@ -1,13 +1,24 @@
 package com.dirtdiveriv.VetApp.services;
 
+import com.dirtdiveriv.VetApp.repositories.PaymentRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.dirtdiveriv.VetApp.models.Payment;
 
+import java.util.List;
+
 @Service
 public class PaymentService {
+
+    private final PaymentRepository paymentRepository;
+
+    @Autowired
+    public PaymentService(PaymentRepository paymentRepository) {
+        this.paymentRepository = paymentRepository;
+    }
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -16,6 +27,10 @@ public class PaymentService {
     public Payment createPayment(Payment payment) {
         entityManager.persist(payment);
         return payment;
+    }
+
+    public List<Payment> getAllPayments() {
+        return paymentRepository.findAll();
     }
 
     public Payment getPaymentById(Long id) {

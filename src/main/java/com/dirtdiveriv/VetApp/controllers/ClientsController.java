@@ -18,6 +18,8 @@ import java.util.List;
 @RequestMapping("/clients")
 public class ClientsController {
 
+
+
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -25,7 +27,21 @@ public class ClientsController {
     private ClientsRepository clientsRepository;
 
     @Autowired
-    private ClientsService clientsService;
+    private final ClientsService clientsService;
+
+    @Autowired
+    public ClientsController(ClientsService clientsService) {
+        this.clientsService = clientsService;
+    }
+
+    @GetMapping
+    public List<Clients> getAllClients() {
+        List<Clients> clients = clientsService.getAllClients();
+        if (clients.isEmpty()) {
+            throw new EntityNotFoundException("No clients found.");
+        }
+        return clients;
+    }
 
     @GetMapping("/{id}")
     public Clients getClientById(@PathVariable Long id) {

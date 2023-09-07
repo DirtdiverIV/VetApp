@@ -1,5 +1,6 @@
 package com.dirtdiveriv.VetApp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.Date;
 
@@ -12,6 +13,7 @@ public class MedicalHistory {
 
     @ManyToOne
     @JoinColumn(name = "pet_id", referencedColumnName = "id", nullable = false)
+    @JsonIgnore
     private Pets pet;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -21,6 +23,7 @@ public class MedicalHistory {
 
     @ManyToOne
     @JoinColumn(name = "treatment_id", referencedColumnName = "id", nullable = false)
+    @JsonIgnore
     private Treatment treatment;
 
     public Long getId() {

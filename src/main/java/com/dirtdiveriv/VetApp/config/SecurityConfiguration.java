@@ -28,7 +28,7 @@ public class SecurityConfiguration {
                         .logoutUrl("/logout")
                         .deleteCookies("JSESSIONID"))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/pets","/pets/**", "/users", "/clients", "/appoinments").permitAll()
+                        .requestMatchers("/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .httpBasic(withDefaults())
