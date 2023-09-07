@@ -3,17 +3,14 @@ package com.dirtdiveriv.VetApp.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "treatments")
 public class Treatment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "pet_id", referencedColumnName = "id", nullable = false)
-    @JsonIgnore
-    private Pets pet;
 
     @Column(nullable = false)
     private String name;
@@ -24,20 +21,16 @@ public class Treatment {
     @Column(nullable = false)
     private Double price;
 
+    @OneToMany(mappedBy = "treatment")
+    @JsonIgnore
+    private List<PetTreatment> petTreatments;
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Pets getPet() {
-        return pet;
-    }
-
-    public void setPet(Pets pet) {
-        this.pet = pet;
     }
 
     public String getName() {
@@ -62,5 +55,13 @@ public class Treatment {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public List<PetTreatment> getPetTreatments() {
+        return petTreatments;
+    }
+
+    public void setPetTreatments(List<PetTreatment> petTreatments) {
+        this.petTreatments = petTreatments;
     }
 }

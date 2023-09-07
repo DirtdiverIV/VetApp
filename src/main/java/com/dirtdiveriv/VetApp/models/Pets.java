@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.List;
 
-
 @Entity
 @Table(name = "pets")
 public class Pets {
@@ -28,12 +27,14 @@ public class Pets {
 
     @OneToMany(mappedBy = "pet")
     @JsonIgnore
-    private List<Appointment>appointments;
+    private List<Appointment> appointments;
 
     @OneToMany(mappedBy = "pet")
     @JsonIgnore
-    private List<MedicalHistory>medicalHistories;
+    private List<MedicalHistory> medicalHistories;
 
+    @OneToMany(mappedBy = "pets", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PetTreatment> petTreatments;
 
     public Long getId() {
         return id;
@@ -91,11 +92,19 @@ public class Pets {
         this.appointments = appointments;
     }
 
-    public List<MedicalHistory>getMedicalHistories() {
+    public List<MedicalHistory> getMedicalHistories() {
         return medicalHistories;
     }
 
-    public void setMedicalHistories(List<MedicalHistory>medicalHistories) {
+    public void setMedicalHistories(List<MedicalHistory> medicalHistories) {
         this.medicalHistories = medicalHistories;
+    }
+
+    public List<PetTreatment> getPetTreatments() {
+        return petTreatments;
+    }
+
+    public void setPetTreatments(List<PetTreatment> petTreatments) {
+        this.petTreatments = petTreatments;
     }
 }
