@@ -6,5 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
-    // Puedes agregar métodos personalizados de consulta aquí si es necesario
 }

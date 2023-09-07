@@ -25,7 +25,6 @@ public class PetsService {
     }
 
     public List<Pets> getPetsByOwnerId(Long ownerId) {
-        // Implementa la lógica para obtener todas las mascotas de un cliente por su ID
         return petsRepository.findByOwnerId(ownerId);
     }
 
@@ -37,7 +36,6 @@ public class PetsService {
         existingPet.setSpecies(updatedPet.getSpecies());
         existingPet.setBreed(updatedPet.getBreed());
         existingPet.setAge(updatedPet.getAge());
-        // Actualiza otros atributos según sea necesario
         return petsRepository.save(existingPet);
     }
 

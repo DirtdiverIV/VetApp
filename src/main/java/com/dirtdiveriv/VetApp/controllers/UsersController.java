@@ -36,7 +36,6 @@ public class UsersController {
         if (existingUser == null) {
             throw new EntityNotFoundException("User with ID " + id + " not found.");
         }
-        // Actualiza los atributos según sea necesario
         entityManager.merge(existingUser);
         return existingUser;
     }

@@ -64,7 +64,6 @@ public class AppointmentController {
             throw new EntityNotFoundException("Appointment with ID " + id + " not found.");
         }
         existingAppointment.setDate(updatedAppointment.getDate());
-        // Actualiza otros atributos según sea necesario
         return appointmentService.updateAppointment(existingAppointment);
     }
 

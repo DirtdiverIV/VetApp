@@ -5,5 +5,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MedicalHistoryRepository extends JpaRepository<MedicalHistory, Long> {
-    // Puedes agregar métodos personalizados de consulta aquí si es necesario
 }

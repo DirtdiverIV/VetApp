@@ -5,7 +5,7 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "pets") // Especifica el nombre de la tabla en la base de datos
+@Table(name = "pets")
 public class Pets {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,8 +30,6 @@ public class Pets {
     @OneToMany(mappedBy = "pet")
     private List<MedicalHistory>medicalHistories;
 
-    // Getters y setters
-    // ...
 
     public Long getId() {
         return id;

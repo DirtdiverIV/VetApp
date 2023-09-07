@@ -30,10 +30,15 @@ public class PetsController {
         return pet;
     }
 
+    @GetMapping
+    public List<Pets> getAllPets() {
+        List<Pets> pets = petsRepository.findAll();
+        return pets;
+    }
+
     @GetMapping("/owner/{ownerId}")
     public List<Pets> getPetsByOwnerId(@PathVariable Long ownerId) {
-        // Recuperar todos los Pets que pertenecen al ownerId dado
-        List<Pets> pets = petsRepository.findByOwnerId(ownerId); // asumiendo que tengas un método findByOwnerId en tu repositorio PetsRepository
+        List<Pets> pets = petsRepository.findByOwnerId(ownerId);
         if (pets.isEmpty()) {
             throw new EntityNotFoundException("No se encontraron mascotas para el cliente con ID " + ownerId);
         }
@@ -58,7 +63,6 @@ public class PetsController {
         existingPet.setSpecies(updatedPet.getSpecies());
         existingPet.setBreed(updatedPet.getBreed());
         existingPet.setAge(updatedPet.getAge());
-        // Actualiza otros atributos según sea necesario
         entityManager.merge(existingPet);
         return existingPet;
     }

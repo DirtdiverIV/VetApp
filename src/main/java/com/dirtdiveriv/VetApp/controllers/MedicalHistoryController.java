@@ -37,7 +37,6 @@ public class MedicalHistoryController {
         if (existingMedicalHistory == null) {
             throw new EntityNotFoundException("Medical history with ID " + id + " not found.");
         }
-        // Actualiza los atributos según sea necesario
         entityManager.merge(existingMedicalHistory);
         return existingMedicalHistory;
     }

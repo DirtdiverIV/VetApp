@@ -37,7 +37,6 @@ public class TreatmentController {
         if (existingTreatment == null) {
             throw new EntityNotFoundException("Treatment with ID " + id + " not found.");
         }
-        // Actualiza los atributos según sea necesario
         entityManager.merge(existingTreatment);
         return existingTreatment;
     }

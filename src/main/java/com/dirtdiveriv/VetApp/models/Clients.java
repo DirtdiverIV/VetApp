@@ -11,10 +11,19 @@ public class Clients {
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private String Name;
 
     @Column(nullable = false)
-    private String email;
+    private String lastName;
+
+    @Column(nullable = false)
+    private String phoneNumber;
+
+    @Column(nullable = false)
+    private String mail;
+
+    @Column(nullable = false)
+    private String address;
 
     @OneToMany(mappedBy = "owner")
     private List<Pets> pets;
@@ -22,8 +31,6 @@ public class Clients {
     @OneToMany(mappedBy = "client")
     private List<Payment> payments;
 
-    // Getters y setters
-    // ...
 
     public Long getId() {
         return id;
@@ -34,19 +41,43 @@ public class Clients {
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        Name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public List<Pets> getPets() {

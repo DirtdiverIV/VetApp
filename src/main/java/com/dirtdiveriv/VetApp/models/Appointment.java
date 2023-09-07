@@ -22,7 +22,6 @@ public class Appointment {
     @JoinColumn(name = "client_id", referencedColumnName = "id", nullable = false)
     private Clients client;
 
-    // Otros atributos y getters y setters
 
     public Long getId() {
         return id;

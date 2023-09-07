@@ -25,11 +25,11 @@ public class ClientsController {
     private ClientsRepository clientsRepository;
 
     @Autowired
-    private ClientsService clientsService; // Inyecta una instancia de ClientsService
+    private ClientsService clientsService;
 
     @GetMapping("/{id}")
     public Clients getClientById(@PathVariable Long id) {
-        Clients client = clientsService.getClientById(id); // Llama al método en la instancia inyectada
+        Clients client = clientsService.getClientById(id);
         if (client == null) {
             throw new EntityNotFoundException("Client with ID " + id + " not found.");
         }
@@ -38,23 +38,20 @@ public class ClientsController {
 
     @GetMapping("/{id}/pets")
     public List<Pets> getClientPets(@PathVariable Long id) {
-        Clients client = clientsService.getClientById(id); // Llama al método en la instancia inyectada
+        Clients client = clientsService.getClientById(id);
         if (client == null) {
             throw new EntityNotFoundException("Client with ID " + id + " not found.");
         }
 
-        // Ahora, puedes acceder a las mascotas del cliente desde el objeto client
         List<Pets> pets = client.getPets();
         return pets;
     }
 
     @GetMapping("/{id}/payments")
     public List<Payment> getClientPayments(@PathVariable Long id) {
-        // Recupera el cliente por su ID
         Clients client = clientsRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Client with ID " + id + " not found."));
 
-        // Obtiene los pagos asociados al cliente
         List<Payment> payments = client.getPayments();
 
         return payments;
@@ -75,8 +72,7 @@ public class ClientsController {
             throw new EntityNotFoundException("Client with ID " + id + " not found.");
         }
         existingClient.setName(updatedClient.getName());
-        existingClient.setEmail(updatedClient.getEmail());
-        // Actualiza otros atributos según sea necesario
+        existingClient.setMail(updatedClient.getMail());
         entityManager.merge(existingClient);
         return existingClient;
     }

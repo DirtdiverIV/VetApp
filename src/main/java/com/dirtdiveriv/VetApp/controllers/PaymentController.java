@@ -37,7 +37,6 @@ public class PaymentController {
         if (existingPayment == null) {
             throw new EntityNotFoundException("Payment with ID " + id + " not found.");
         }
-        // Actualiza los atributos según sea necesario
         entityManager.merge(existingPayment);
         return existingPayment;
     }

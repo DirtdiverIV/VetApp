@@ -1,5 +1,7 @@
 package com.dirtdiveriv.VetApp.models;
+
 import jakarta.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "payments")
@@ -12,7 +14,11 @@ public class Payment {
     @JoinColumn(name = "client_id", referencedColumnName = "id", nullable = false)
     private Clients client;
 
-    // Otros atributos y getters y setters
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fecha;
+
+    private double cantidad;
+
 
     public Long getId() {
         return id;
@@ -28,5 +34,21 @@ public class Payment {
 
     public void setClient(Clients client) {
         this.client = client;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public double getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(double cantidad) {
+        this.cantidad = cantidad;
     }
 }
