@@ -45,3 +45,10 @@ INSERT INTO users (name, lastname, mail, password)
 VALUES
   ('Admin', 'Adminson', 'admin@example.com', 'admin123'),
   ('Usuario', 'Prueba', 'usuario@example.com', 'usuario456');
+
+  -- Inserta datos ficticios en la tabla "pet_treatment"
+  INSERT INTO pet_treatment (pet_id, treatment_id)
+  VALUES
+    (1, 1), -- Asigna el tratamiento 1 a la mascota 1
+    (2, 2), -- Asigna el tratamiento 2 a la mascota 2
+    (3, 3); -- Asigna el tratamiento 3 a la mascota 3;

@@ -23,7 +23,7 @@ public class MedicalHistory {
 
     @ManyToOne
     @JoinColumn(name = "treatment_id", referencedColumnName = "id", nullable = false)
-    @JsonIgnore
+    // @JsonIgnore
     private Treatment treatment;
 
     public Long getId() {

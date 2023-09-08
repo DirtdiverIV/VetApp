@@ -21,9 +21,6 @@ public class Treatment {
     @Column(nullable = false)
     private Double price;
 
-    @OneToMany(mappedBy = "treatment")
-    @JsonIgnore
-    private List<PetTreatment> petTreatments;
 
     public Long getId() {
         return id;
@@ -57,11 +54,5 @@ public class Treatment {
         this.price = price;
     }
 
-    public List<PetTreatment> getPetTreatments() {
-        return petTreatments;
-    }
 
-    public void setPetTreatments(List<PetTreatment> petTreatments) {
-        this.petTreatments = petTreatments;
-    }
 }

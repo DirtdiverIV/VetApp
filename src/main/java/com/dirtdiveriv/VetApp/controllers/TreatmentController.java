@@ -7,12 +7,21 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/treatments")
 public class TreatmentController {
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    @GetMapping
+    public List<Treatment> getAllTreatments() {
+        List<Treatment> treatments = entityManager.createQuery("SELECT t FROM Treatment t", Treatment.class)
+                .getResultList();
+        return treatments;
+    }
 
     @GetMapping("/{id}")
     public Treatment getTreatmentById(@PathVariable Long id) {

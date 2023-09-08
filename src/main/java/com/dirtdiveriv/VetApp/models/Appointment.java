@@ -15,16 +15,18 @@ public class Appointment {
     @Column(nullable = false)
     private Date date;
 
+    @Column(nullable = false)
+    private String description;
+
     @ManyToOne
-    @JoinColumn(name = "pet_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "pet_id", referencedColumnName = "id")
     @JsonIgnore
     private Pets pet;
 
     @ManyToOne
-    @JoinColumn(name = "client_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "client_id", referencedColumnName = "id")
     @JsonIgnore
     private Clients client;
-
 
     public Long getId() {
         return id;
@@ -40,6 +42,14 @@ public class Appointment {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Pets getPet() {

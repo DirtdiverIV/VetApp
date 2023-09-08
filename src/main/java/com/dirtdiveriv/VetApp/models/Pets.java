@@ -30,11 +30,9 @@ public class Pets {
     private List<Appointment> appointments;
 
     @OneToMany(mappedBy = "pet")
-    @JsonIgnore
+    // @JsonIgnore
     private List<MedicalHistory> medicalHistories;
 
-    @OneToMany(mappedBy = "pets", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<PetTreatment> petTreatments;
 
     public Long getId() {
         return id;
@@ -100,11 +98,5 @@ public class Pets {
         this.medicalHistories = medicalHistories;
     }
 
-    public List<PetTreatment> getPetTreatments() {
-        return petTreatments;
-    }
 
-    public void setPetTreatments(List<PetTreatment> petTreatments) {
-        this.petTreatments = petTreatments;
-    }
 }

@@ -27,7 +27,7 @@ public class Clients {
     private String address;
 
     @OneToMany(mappedBy = "owner")
-    @JsonIgnore
+
     private List<Pets> pets;
 
     @OneToMany(mappedBy = "client")
