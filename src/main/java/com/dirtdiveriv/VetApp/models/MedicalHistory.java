@@ -21,10 +21,6 @@ public class MedicalHistory {
 
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "treatment_id", referencedColumnName = "id", nullable = false)
-    // @JsonIgnore
-    private Treatment treatment;
 
     public Long getId() {
         return id;
@@ -58,11 +54,4 @@ public class MedicalHistory {
         this.description = description;
     }
 
-    public Treatment getTreatment() {
-        return treatment;
-    }
-
-    public void setTreatment(Treatment treatment) {
-        this.treatment = treatment;
-    }
 }

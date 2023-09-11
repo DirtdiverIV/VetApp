@@ -23,10 +23,6 @@ public class Appointment {
     @JsonIgnore
     private Pets pet;
 
-    @ManyToOne
-    @JoinColumn(name = "client_id", referencedColumnName = "id")
-    @JsonIgnore
-    private Clients client;
 
     public Long getId() {
         return id;
@@ -58,13 +54,5 @@ public class Appointment {
 
     public void setPet(Pets pet) {
         this.pet = pet;
-    }
-
-    public Clients getClient() {
-        return client;
-    }
-
-    public void setClient(Clients client) {
-        this.client = client;
     }
 }
